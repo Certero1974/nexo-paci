@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-deep: #0A192F; /* PACiA Dark Blue */
+  --color-brand-light: #F8FAFC;
+  
+  /* PACiA Official Colors */
+  --color-pacia-cyan: #00B9DB;
+  --color-pacia-indigo: #1E88E5;
+  
+  /* Role Colors */
+  --color-role-docente: #1E88E5;
+  --color-role-eddif: #8E1E4F;
+  --color-role-fono: #00B9DB;
+  --color-role-psicologa: #7E57C2;
+  --color-role-terapeuta: #FB8C00;
+  --color-role-familia: #F4B400;
+  --color-role-medico: #43A047;
+  --color-role-normativa: #757575;
+  
+  /* Fonts */
+  --font-sans: var(--font-inter), sans-serif;
+  --font-display: var(--font-nunito), sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: #F4F7FA;
+    --foreground: #1E293B;
+    --foreground-muted: #64748B;
+    --border: #E2E8F0;
+    --card: #FFFFFF;
+    
+    /* Default theme */
+    --theme-primary: var(--color-brand-deep);
+    --theme-secondary: var(--color-pacia-cyan);
+    --theme-light: rgba(0, 185, 219, 0.1);
+  }
+
+  :root[data-role="Educadora Diferencial"] {
+    --theme-primary: var(--color-role-eddif);
+    --theme-secondary: #c2276a;
+    --theme-light: rgba(142, 30, 79, 0.1);
+  }
+
+  :root[data-role="Profesor Aula"] {
+    --theme-primary: var(--color-role-docente);
+    --theme-secondary: #42a5f5;
+    --theme-light: rgba(30, 136, 229, 0.1);
+  }
+
+  :root[data-role="Psicólogo"] {
+    --theme-primary: var(--color-role-psicologa);
+    --theme-secondary: #9575cd;
+    --theme-light: rgba(126, 87, 194, 0.1);
+  }
+
+  :root[data-role="Fonoaudiólogo"] {
+    --theme-primary: var(--color-role-fono);
+    --theme-secondary: #26c6da;
+    --theme-light: rgba(0, 185, 219, 0.1);
+  }
+
+  :root[data-role="Psicopedagoga"] {
+    --theme-primary: #00897B; /* Un teal ad-hoc ya que no está en el mapa, o se asume similar a fono */
+    --theme-secondary: #26A69A;
+    --theme-light: rgba(0, 137, 123, 0.1);
+  }
+
+  :root[data-role="Terapeuta Ocupacional"] {
+    --theme-primary: var(--color-role-terapeuta);
+    --theme-secondary: #ffa726;
+    --theme-light: rgba(251, 140, 0, 0.1);
+  }
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-nunito), sans-serif;
+}
+
+.card-nexo {
+  background: var(--card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 12px rgba(10, 17, 40, 0.03);
+  transition: all 0.3s ease;
+}
+
+/* PACIA Custom Utilities */
+.pacia-gradient-text {
+  background: linear-gradient(135deg, var(--theme-secondary), var(--theme-primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.pacia-gradient-bg {
+  background: linear-gradient(135deg, var(--theme-primary), var(--theme-secondary));
+}
+
+.pacia-glow {
+  box-shadow: 0 0 15px var(--theme-light);
+  border-color: var(--theme-secondary);
+}
+
+.bg-nodes-pattern {
+  background-image: radial-gradient(var(--theme-light) 1px, transparent 1px);
+  background-size: 24px 24px;
+}

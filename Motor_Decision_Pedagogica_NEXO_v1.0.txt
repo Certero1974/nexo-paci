@@ -1,0 +1,176 @@
+Motor de Decisión Pedagógica NEXO
+Especificación conceptual, funcional y técnica
+Versión 1.0 | Proyecto NEXO
+
+Evidencia → Barrera → Currículum → Respuesta educativa → Indicador → Seguimiento
+
+Resumen ejecutivo
+El Motor de Decisión Pedagógica NEXO (MDP-NEXO) es el núcleo metodológico y computacional de la plataforma NEXO. Su función es transformar información educativa dispersa en propuestas pedagógicas justificadas, trazables, revisables y sometidas a validación profesional. No diagnostica, no reemplaza a los equipos educativos y no adopta decisiones autónomas sobre estudiantes. Organiza evidencias, explicita razonamientos, detecta vacíos, formula hipótesis y facilita acuerdos interdisciplinarios.
+1. Propósito y alcance
+El MDP-NEXO debe responder una pregunta central: ¿qué respuesta educativa es pertinente para este estudiante, en este contexto, frente a este aprendizaje, y con qué evidencia podremos saber si funciona?
+Convertir documentos e interacciones profesionales en evidencias estructuradas.
+Distinguir fortalezas, necesidades, barreras y facilitadores.
+Conectar el desempeño observado con Objetivos de Aprendizaje y progresiones curriculares.
+Proponer respuestas educativas en orden de menor a mayor intensidad.
+Exigir indicadores observables y responsables para cada decisión.
+Mantener trazabilidad entre la fuente original y el documento final.
+Actualizar las decisiones a partir del seguimiento.
+2. Principios rectores
+
+3. Arquitectura conceptual del motor
+El motor se organiza en siete capas funcionales:
+1. Ingesta y clasificación de fuentes
+2. Extracción y normalización de evidencias
+3. Construcción del perfil pedagógico funcional
+4. Vinculación curricular y normativa
+5. Motor de reglas y razonamiento
+6. Validación profesional y auditoría
+7. Seguimiento y realimentación
+Diagrama lógico:
+FUENTES
+  ↓
+EVIDENCIAS ESTRUCTURADAS
+  ↓
+PERFIL FUNCIONAL DEL ESTUDIANTE
+  ↓
+BARRERAS + FACILITADORES + CURRÍCULUM
+  ↓
+MOTOR DE DECISIÓN PEDAGÓGICA
+  ↓
+PROPUESTAS CON JUSTIFICACIÓN Y NIVEL DE CONFIANZA
+  ↓
+VALIDACIÓN HUMANA
+  ↓
+IMPLEMENTACIÓN Y SEGUIMIENTO
+  ↺ NUEVA EVIDENCIA
+4. Entradas del sistema
+
+5. Unidad mínima de evidencia
+NEXO no debe almacenar solamente texto libre. Cada hallazgo se transforma en una Unidad de Evidencia Pedagógica (UEP).
+
+6. Perfil Pedagógico Funcional
+El perfil no es un resumen clínico. Es una representación dinámica de cómo el estudiante accede, participa y progresa en situaciones educativas.
+Fortalezas e intereses
+Nivel de competencia curricular
+Acceso a la información
+Formas de respuesta
+Comunicación
+Funciones ejecutivas
+Autorregulación
+Autonomía
+Participación e interacción
+Factores contextuales
+Apoyos efectivos
+Apoyos insuficientes o contraproducentes
+7. Taxonomía de barreras
+
+8. Niveles de respuesta educativa
+
+9. Reglas de decisión
+
+10. Matriz de Decisión Pedagógica
+
+11. Niveles de evidencia y confianza
+
+12. Lógica de puntuación orientativa
+La puntuación no reemplaza el juicio profesional. Sirve para ordenar prioridades y transparentar incertidumbres.
+
+Prioridad sugerida = relevancia + impacto + riesgo + evidencia - incertidumbre. Toda ponderación deberá ser configurable y validada mediante pilotaje.
+13. Proceso de razonamiento
+Identificar qué aprendizaje o participación se busca favorecer.
+Reunir evidencias pertinentes y descartar información no relacionada.
+Describir el desempeño actual sin etiquetas globales.
+Localizar la barrera en la interacción estudiante-tarea-entorno.
+Revisar qué apoyos se han probado y con qué fidelidad.
+Vincular el caso con OA y prerrequisitos.
+Generar dos o más alternativas de respuesta.
+Comparar beneficios, riesgos, carga y grado de restricción.
+Seleccionar una propuesta provisional.
+Definir indicador, responsable, plazo y evidencia esperada.
+Someter la propuesta a validación humana.
+Revisar el efecto y actualizar la decisión.
+14. Salidas del motor
+Perfil integral sintetizado
+Mapa de fortalezas, barreras y facilitadores
+Matriz de decisión pedagógica
+Propuestas priorizadas con justificación
+Alternativas descartadas y razones
+Lista de información faltante
+Borrador de PACI/PAI
+Ficha breve para aula
+Plan de seguimiento
+Alertas normativas, éticas y de privacidad
+15. Interfaz de validación profesional
+Cada propuesta debe mostrar evidencia, razonamiento, nivel de confianza y acciones disponibles: aprobar, editar, rechazar, solicitar nueva evidencia, dejar comentario o derivar a otro profesional. La plataforma debe registrar quién tomó la decisión y en qué versión.
+16. Gestión de contradicciones
+
+17. Casos en que el motor debe abstenerse
+Información insuficiente o de baja calidad
+Solicitud de diagnóstico clínico
+Recomendación farmacológica
+Decisión disciplinaria automática
+Eliminación de OA sin evidencia suficiente
+Interpretación de riesgo grave sin protocolo humano
+Uso de datos no autorizados
+Conflicto normativo no resuelto
+18. Roles futuros de agentes
+
+19. Requisitos funcionales del motor
+MDP-RF-001: Ingerir y clasificar documentos autorizados.
+MDP-RF-002: Crear UEP con citas verificables.
+MDP-RF-003: Detectar duplicados, vigencia y contradicciones.
+MDP-RF-004: Construir perfiles por dimensión.
+MDP-RF-005: Vincular evidencias con OA y prerrequisitos.
+MDP-RF-006: Aplicar reglas configurables y versionadas.
+MDP-RF-007: Generar alternativas, no una única respuesta.
+MDP-RF-008: Mostrar explicaciones y nivel de confianza.
+MDP-RF-009: Requerir validación humana para cerrar decisiones.
+MDP-RF-010: Registrar seguimiento y realimentar el modelo del caso.
+MDP-RF-011: Mantener historial completo de versiones.
+MDP-RF-012: Exportar matrices y borradores en formatos institucionales.
+20. Requisitos no funcionales
+Explicabilidad por diseño
+Auditoría completa
+Privacidad y minimización de datos
+Accesibilidad WCAG 2.2 AA
+Configurabilidad institucional
+Tolerancia a fuentes incompletas
+Escalabilidad modular
+Interoperabilidad mediante API
+Disponibilidad de historial
+Rendimiento adecuado para uso escolar
+21. Indicadores de calidad del motor
+
+22. MVP del Motor NEXO
+El primer prototipo no requiere múltiples agentes. Debe implementar un flujo acotado y verificable:
+Caso anonimizado
+Carga de 4 a 6 documentos
+Extracción asistida de evidencias
+Perfil funcional
+Selección manual de OA
+Matriz de decisiones
+Tres alternativas de respuesta
+Auditoría de coherencia
+Validación profesional
+Exportación de borrador y plan de seguimiento
+23. Ejemplo resumido de funcionamiento
+Situación: estudiante de sexto básico con desempeño adecuado en cálculo, pero dificultades persistentes para resolver problemas escritos.
+Evidencia: resuelve operaciones aisladas, pero selecciona incorrectamente la operación en enunciados extensos.
+Hipótesis: la principal barrera puede ser lingüística y de carga cognitiva, no de cálculo.
+Alternativa A: fragmentar el problema y destacar datos relevantes.
+Alternativa B: permitir representación concreta o pictórica previa.
+Alternativa C: evaluar oralmente la comprensión antes del cálculo.
+Indicador: identifica la operación correcta en 4 de 5 problemas durante tres mediciones.
+Decisión humana: el equipo selecciona A+B por seis semanas y programa revisión.
+24. Roadmap
+
+25. Decisiones pendientes
+Definir propietario y gobernanza del modelo pedagógico.
+Validar taxonomías con educadoras diferenciales y docentes.
+Seleccionar estándares de interoperabilidad.
+Definir política de consentimiento y retención.
+Construir corpus normativo y curricular oficial.
+Diseñar protocolo de pilotaje y evaluación ética.
+Acordar criterios institucionales para adecuaciones curriculares.
+Conclusión
+El Motor de Decisión Pedagógica NEXO debe entenderse como una metodología computacionalmente asistida para mejorar la calidad del razonamiento profesional. Su valor no reside en generar texto rápidamente, sino en hacer visible la cadena que conecta evidencia, barrera, currículum, respuesta educativa y seguimiento. La tecnología puede cambiar; esta lógica constituye el activo intelectual central del proyecto NEXO.

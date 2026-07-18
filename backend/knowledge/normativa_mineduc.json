@@ -1,0 +1,43 @@
+{
+  "decreto_83": {
+    "titulo": "Decreto 83/2015: Diversificación de la Enseñanza",
+    "principios": [
+      "Igualdad de oportunidades.",
+      "Calidad educativa con equidad.",
+      "Inclusión educativa y valoración de la diversidad.",
+      "Flexibilidad en la respuesta educativa."
+    ],
+    "tipos_adecuacion_acceso": [
+      "Presentación de la información (ej. visual, auditiva).",
+      "Formas de respuesta (ej. oral, escrita, lengua de señas).",
+      "Entorno (ej. ubicación del estudiante, luz, ruido).",
+      "Organización del tiempo y horario."
+    ],
+    "tipos_adecuacion_objetivos": [
+      "Graduación del nivel de complejidad.",
+      "Priorización de objetivos de aprendizaje y contenidos.",
+      "Temporalización (flexibilización de tiempos).",
+      "Enriquecimiento del currículum.",
+      "Eliminación de aprendizajes (solo como última opción)."
+    ],
+    "aplicacion": "Debe aplicarse a estudiantes con NEE (Necesidades Educativas Especiales) a través de un PACI, priorizando siempre las adecuaciones de acceso antes que las de los objetivos de aprendizaje."
+  },
+  "decreto_170": {
+    "titulo": "Decreto 170/2009: Normas para la Evaluación Diagnóstica",
+    "objetivo": "Fijar normas para determinar los alumnos con NEE que serán beneficiarios de la subvención para educación especial.",
+    "diagnosticos_transitorios_neet": [
+      "Trastorno Específico del Lenguaje (TEL).",
+      "Trastorno por Déficit de Atención (TDA/TDAH).",
+      "Dificultades Específicas de Aprendizaje (DEA).",
+      "Funcionamiento Intelectual Limítrofe (FIL)."
+    ],
+    "diagnosticos_permanentes_neep": [
+      "Discapacidad Intelectual (DI).",
+      "Trastorno del Espectro Autista (TEA).",
+      "Discapacidad Visual o Auditiva.",
+      "Discapacidad Múltiple."
+    ],
+    "evaluacion": "Requiere de una evaluación integral e interdisciplinaria (médico, psicólogo, fonoaudiólogo, educador diferencial).",
+    "pacis": "Establece la obligatoriedad del Programa de Integración Escolar (PIE) para organizar los apoyos."
+  }
+}
