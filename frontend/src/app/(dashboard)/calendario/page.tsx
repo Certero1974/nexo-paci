@@ -26,7 +26,8 @@ export default function CalendarioPage() {
       const token = localStorage.getItem("pacia_token");
       
       // Obtener eventos
-      const res = await fetch("http://localhost:8000/api/calendario", {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+      const res = await fetch(`${apiUrl}/api/calendario`, {
         headers: { "Authorization": `Bearer ${token}` }
       });
       if (res.ok) setEventos(await res.json());
@@ -67,7 +68,8 @@ export default function CalendarioPage() {
         estudiante_id: nuevoEvento.estudiante_id ? parseInt(nuevoEvento.estudiante_id) : null
       };
 
-      const res = await fetch("http://localhost:8000/api/calendario", {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+      const res = await fetch(`${apiUrl}/api/calendario`, {
         method: "POST",
         headers: { 
           "Authorization": `Bearer ${token}`,
@@ -173,7 +175,7 @@ export default function CalendarioPage() {
             ))}
           </div>
           
-          <div className="grid grid-cols-7 flex-1 auto-rows-fr bg-slate-100 gap-[1px]">
+          <div className="grid grid-cols-7 flex-1 auto-rows-fr bg-slate-100 gap-[1px] overflow-y-auto custom-scrollbar">
             {blanks.map(b => (
               <div key={`blank-${b}`} className="bg-slate-50/50 p-2 min-h-[120px]"></div>
             ))}
