@@ -1,71 +1,50 @@
-# SYNEXA - Plataforma Colaborativa de Inteligencia Artificial para la Educación Especial
+# Nexo PACI (PACIA)
 
-SYNEXA es un MVP (Producto Mínimo Viable) diseñado para revolucionar la elaboración de Programas de Adecuación Curricular Individual (PACI) mediante el uso de Inteligencia Artificial (Google Gemini) y arquitectura RAG (Generación Aumentada por Recuperación).
+Plataforma inteligente para la creación y gestión de Planes de Adecuación Curricular Individual (PACI).
+Este sistema integra Inteligencia Artificial para asistir a los profesionales de la educación en la redacción, análisis y seguimiento de las adecuaciones curriculares.
 
-## Características Principales
+## Tecnologías Utilizadas
 
-*   **Motor de Decisión Pedagógica:** Utiliza Gemini Flash para analizar informes de especialistas y sugerir barreras, fortalezas y propuestas de adecuación.
-*   **Extracción de Documentos:** Lee y procesa documentos PDF y Word automáticamente sin necesidad de pre-procesamiento manual.
-*   **Interfaz de Usuario Premium:** Desarrollada en Next.js y TailwindCSS, enfocada en la usabilidad y la estética profesional para docentes.
-*   **Arquitectura Desacoplada:** Backend robusto en FastAPI (Python) separado del frontend para máxima escalabilidad.
+- **Frontend:** Next.js (React), TailwindCSS, TypeScript
+- **Backend:** FastAPI (Python), SQLAlchemy, LangChain
+- **Base de Datos:** PostgreSQL (alojado en Supabase)
+- **Despliegue:** Vercel (Frontend), Render (Backend)
 
-## Requisitos Previos
+## Arquitectura del Proyecto
 
-*   **Node.js** (v18+)
-*   **Python** (3.9+)
-*   **PostgreSQL** (Para almacenamiento persistente a futuro)
-*   **Google API Key** (Gemini)
+El proyecto está dividido en dos carpetas principales:
+- `frontend/`: Contiene toda la interfaz visual y la lógica del cliente (Next.js).
+- `backend/`: Contiene el motor de base de datos, la API RESTful y el servicio de Inteligencia Artificial (FastAPI).
 
-## Instalación y Ejecución Local
+## Despliegue (Producción)
 
-### 1. Backend (FastAPI / IA)
+La plataforma se encuentra configurada para despliegue continuo:
+- Cualquier cambio en la rama `main` que afecte la carpeta `frontend/` se actualizará automáticamente en Vercel.
+- Cualquier cambio que afecte la carpeta `backend/` se actualizará automáticamente en Render.
 
-1.  Abre una terminal y entra a la carpeta `backend`:
-    ```bash
-    cd backend
-    ```
-2.  Crea un entorno virtual y actívalo:
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # En Windows usa: venv\Scripts\activate
-    ```
-3.  Instala las dependencias necesarias:
-    ```bash
-    pip install -r requirements.txt
-    ```
-4.  Configura las variables de entorno:
-    Asegúrate de que el archivo `backend/.env` tenga tu llave de API de Google (la que comienza con `AQUI_TU_LLAVE...` o un token OAuth válido).
-    ```env
-    GOOGLE_API_KEY="TU_LLAVE_AQUI"
-    DATABASE_URL="postgresql://postgres:postgres@localhost:5432/nexo_paci"
-    ```
-5.  Inicia el servidor backend:
-    ```bash
-    uvicorn main:app --host 0.0.0.0 --port 8000 --reload
-    ```
-    El backend estará corriendo en `http://localhost:8000`.
+### Variables de Entorno en Producción
+Para que el sistema funcione en la nube, asegúrate de configurar las siguientes variables:
+**En Render (Backend):**
+- `DATABASE_URL` (URL de conexión a Supabase)
+- `OPENAI_API_KEY` (Llave de la API de OpenAI)
+- `SECRET_KEY` (Clave secreta para la generación de tokens JWT)
 
-### 2. Frontend (Next.js / React)
+**En Vercel (Frontend):**
+- `NEXT_PUBLIC_API_URL` (URL pública del backend en Render, sin barra final)
 
-1.  Abre otra terminal y entra a la carpeta `frontend`:
-    ```bash
-    cd frontend
-    ```
-2.  Instala las dependencias de Node.js:
-    ```bash
-    npm install
-    ```
-3.  Inicia el servidor de desarrollo:
-    ```bash
-    npm run dev
-    ```
-4.  Abre tu navegador web en `http://localhost:3000` para ver la plataforma SYNEXA en acción.
+## Ejecución Local (Desarrollo)
 
-## Uso de la Plataforma
+Para probar la plataforma en tu computador local:
 
-1. Selecciona a un estudiante en el panel principal (ej. Martina).
-2. Haz clic en **Subir Informe** y selecciona un documento real (PDF/Word).
-3. Espera a que el documento se cargue (aparecerá un check verde).
-4. Presiona **GENERAR PACI EN 1 CLIC**.
-5. La Inteligencia Artificial analizará el documento y te entregará el perfil funcional y las estrategias pedagógicas recomendadas.
-6. Valida y Guarda el PACI.
+1. **Backend:**
+   ```bash
+   cd backend
+   source ../test_env/bin/activate
+   uvicorn main:app --reload --port 8000
+   ```
+
+2. **Frontend:**
+   ```bash
+   cd frontend
+   npm run dev
+   ```
