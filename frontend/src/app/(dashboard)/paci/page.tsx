@@ -16,7 +16,7 @@ export default function PaciHistoricoPage() {
     const fetchPacis = async () => {
       try {
         const token = localStorage.getItem("pacia_token");
-        const res = await fetch("http://localhost:8000/api/paci", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/paci`, {
           headers: { "Authorization": `Bearer ${token}` }
         });
         if (res.ok) {
@@ -55,7 +55,7 @@ export default function PaciHistoricoPage() {
   const handleDownloadPDF = async (paciId: number, rut: string) => {
     try {
       const token = localStorage.getItem("pacia_token");
-      const res = await fetch(`http://localhost:8000/api/paci/${paciId}/pdf`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/paci/${paciId}/pdf`, {
         headers: { "Authorization": `Bearer ${token}` }
       });
       
@@ -86,7 +86,7 @@ export default function PaciHistoricoPage() {
     if (paciToDelete === null) return;
     try {
       const token = localStorage.getItem("pacia_token");
-      const res = await fetch(`http://localhost:8000/api/paci/${paciToDelete}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/paci/${paciToDelete}`, {
         method: "DELETE",
         headers: { "Authorization": `Bearer ${token}` }
       });

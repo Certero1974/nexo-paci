@@ -31,7 +31,7 @@ export default function ExpedienteVivo() {
   const fetchComentarios = async () => {
     try {
       const token = localStorage.getItem("pacia_token");
-      const res = await fetch(`http://localhost:8000/api/expedientes/${id}/comentarios`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/expedientes/${id}/comentarios`, {
         headers: { "Authorization": `Bearer ${token}` }
       });
       if (res.ok) {
@@ -52,7 +52,7 @@ export default function ExpedienteVivo() {
     setIsPosting(true);
     try {
       const token = localStorage.getItem("pacia_token");
-      const res = await fetch(`http://localhost:8000/api/expedientes/${id}/comentarios`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/expedientes/${id}/comentarios`, {
         method: "POST",
         headers: { 
           "Authorization": `Bearer ${token}`,
@@ -76,7 +76,7 @@ export default function ExpedienteVivo() {
     try {
       const token = localStorage.getItem("pacia_token");
       // 1. Generar con IA
-      const resGen = await fetch("http://localhost:8000/api/paci/generate", {
+      const resGen = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/paci/generate`, {
         method: "POST",
         headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
         body: JSON.stringify({ estudiante_id: parseInt(id as string) || 1 }) // fallback a 1
@@ -85,7 +85,7 @@ export default function ExpedienteVivo() {
       const dataGen = await resGen.json();
       
       // 2. Guardar en BD
-      const resSave = await fetch("http://localhost:8000/api/paci/save", {
+      const resSave = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/paci/save`, {
         method: "POST",
         headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
         body: JSON.stringify({ estudiante_id: parseInt(id as string) || 1, paci_data: dataGen.data })
@@ -110,7 +110,7 @@ export default function ExpedienteVivo() {
   const handleDeleteExpediente = async () => {
     try {
       const token = localStorage.getItem("pacia_token");
-      const res = await fetch(`http://localhost:8000/api/estudiantes/${id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/estudiantes/${id}`, {
         method: "DELETE",
         headers: { "Authorization": `Bearer ${token}` }
       });
@@ -135,7 +135,7 @@ export default function ExpedienteVivo() {
     try {
       const token = localStorage.getItem("pacia_token");
       // Importante: Asumimos que id (del URL param) corresponde al ID del expediente (por la estructura 1:1)
-      const response = await fetch(`http://localhost:8000/api/expedientes/${id}/documentos`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/expedientes/${id}/documentos`, {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${token}`

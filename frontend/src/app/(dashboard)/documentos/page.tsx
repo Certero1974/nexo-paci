@@ -22,7 +22,7 @@ export default function BibliotecaInteligentePage() {
   const fetchDocs = async () => {
     try {
       const token = localStorage.getItem("pacia_token");
-      const res = await fetch("http://localhost:8000/api/documents", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/documents`, {
         headers: { "Authorization": `Bearer ${token}` }
       });
       if (res.ok) {
@@ -55,7 +55,7 @@ export default function BibliotecaInteligentePage() {
 
     try {
       const token = localStorage.getItem("pacia_token");
-      const res = await fetch("http://localhost:8000/api/documents/upload", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/documents/upload`, {
         method: "POST",
         headers: { "Authorization": `Bearer ${token}` },
         body: formData
@@ -76,7 +76,7 @@ export default function BibliotecaInteligentePage() {
   const handleDownload = async (docId: number, nombre: string) => {
     try {
       const token = localStorage.getItem("pacia_token");
-      const res = await fetch(`http://localhost:8000/api/documents/download/${docId}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/documents/download/${docId}`, {
         headers: { "Authorization": `Bearer ${token}` }
       });
       if (!res.ok) throw new Error("Error al descargar");
@@ -97,7 +97,7 @@ export default function BibliotecaInteligentePage() {
   const handleChangeCategory = async (docId: number, newCategory: string) => {
     try {
       const token = localStorage.getItem("pacia_token");
-      const res = await fetch(`http://localhost:8000/api/documents/${docId}/categoria`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/documents/${docId}/categoria`, {
         method: "PUT",
         headers: { 
           "Authorization": `Bearer ${token}`,
@@ -126,7 +126,7 @@ export default function BibliotecaInteligentePage() {
     
     try {
       const token = localStorage.getItem("pacia_token");
-      const response = await fetch(`http://localhost:8000/api/documents/${docToDelete}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/documents/${docToDelete}`, {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${token}`
@@ -372,7 +372,7 @@ export default function BibliotecaInteligentePage() {
                       
                       <div className="flex items-center gap-2">
                         <button 
-                          onClick={() => window.open(`http://localhost:8000/${doc.archivo_url}`, '_blank')}
+                          onClick={() => window.open(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/${doc.archivo_url}`, '_blank')}
                           className="w-9 h-9 rounded-xl bg-white shadow-sm hover:shadow-md border border-black/5 flex items-center justify-center text-brand-deep transition-all hover:scale-105"
                           title="Descargar/Ver Documento"
                         >

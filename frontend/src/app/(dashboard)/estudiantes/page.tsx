@@ -48,7 +48,7 @@ export default function EstudiantesPage() {
     setIsLoading(true);
     try {
       const token = localStorage.getItem("pacia_token");
-      const res = await fetch("http://localhost:8000/api/estudiantes", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/estudiantes`, {
         headers: {
           "Authorization": `Bearer ${token}`
         }
@@ -74,7 +74,7 @@ export default function EstudiantesPage() {
     
     try {
       const token = localStorage.getItem("pacia_token");
-      const res = await fetch(`http://localhost:8000/api/estudiantes/${studentToDelete}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/estudiantes/${studentToDelete}`, {
         method: "DELETE",
         headers: { "Authorization": `Bearer ${token}` }
       });
@@ -112,7 +112,7 @@ export default function EstudiantesPage() {
   const handleViewExpediente = async (estudianteId: number) => {
     try {
       const token = localStorage.getItem("pacia_token");
-      const res = await fetch(`http://localhost:8000/api/expedientes/estudiante/${estudianteId}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/expedientes/estudiante/${estudianteId}`, {
         headers: { "Authorization": `Bearer ${token}` }
       });
       if (res.ok) {
@@ -139,8 +139,8 @@ export default function EstudiantesPage() {
       const token = localStorage.getItem("pacia_token");
       
       const url = editingId 
-        ? `http://localhost:8000/api/estudiantes/${editingId}`
-        : "http://localhost:8000/api/estudiantes";
+        ? `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/estudiantes/${editingId}`
+        : `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/estudiantes`;
         
       const method = editingId ? "PUT" : "POST";
 

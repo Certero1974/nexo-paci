@@ -20,7 +20,7 @@ export default function PaciGenerator() {
     const fetchEstudiantes = async () => {
       try {
         const token = localStorage.getItem("pacia_token");
-        const res = await fetch("http://localhost:8000/api/estudiantes", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/estudiantes`, {
           headers: { "Authorization": `Bearer ${token}` }
         });
         if (res.ok) {
@@ -45,13 +45,13 @@ export default function PaciGenerator() {
         const token = localStorage.getItem("pacia_token");
         
         // 1. Obtener expediente id
-        const resExp = await fetch(`http://localhost:8000/api/expedientes/estudiante/${selectedEstudianteId}`, {
+        const resExp = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/expedientes/estudiante/${selectedEstudianteId}`, {
           headers: { "Authorization": `Bearer ${token}` }
         });
         if (resExp.ok) {
           const exp = await resExp.json();
           // 2. Obtener cantidad de documentos
-          const resDocs = await fetch(`http://localhost:8000/api/expedientes/${exp.id}/documentos`, {
+          const resDocs = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/expedientes/${exp.id}/documentos`, {
             headers: { "Authorization": `Bearer ${token}` }
           });
           if (resDocs.ok) {
@@ -76,7 +76,7 @@ export default function PaciGenerator() {
     setError(null);
     try {
       const token = localStorage.getItem("pacia_token");
-      const response = await fetch("http://localhost:8000/api/paci/generate", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/paci/generate`, {
         method: "POST",
         headers: { 
           "Content-Type": "application/json",
@@ -115,7 +115,7 @@ export default function PaciGenerator() {
         payloadData.herramientas_metodologicas = `${selected.titulo}: ${selected.justificacion}`;
       }
       
-      const response = await fetch("http://localhost:8000/api/paci/save", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/paci/save`, {
         method: "POST",
         headers: { 
           "Content-Type": "application/json",

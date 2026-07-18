@@ -13,7 +13,7 @@ export default function ExpedientesPage() {
     const fetchExpedientes = async () => {
       try {
         const token = localStorage.getItem("pacia_token");
-        const res = await fetch("http://localhost:8000/api/expedientes", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/expedientes`, {
           headers: { "Authorization": `Bearer ${token}` }
         });
         if (res.ok) {

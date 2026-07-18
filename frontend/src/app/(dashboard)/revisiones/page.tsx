@@ -20,7 +20,7 @@ export default function RevisionesPage() {
     const fetchPacis = async () => {
       try {
         const token = localStorage.getItem("pacia_token");
-        const res = await fetch("http://localhost:8000/api/paci", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/paci`, {
           headers: { "Authorization": `Bearer ${token}` }
         });
         if (res.ok) {
@@ -48,7 +48,7 @@ export default function RevisionesPage() {
     
     try {
       const token = localStorage.getItem("pacia_token");
-      const res = await fetch(`http://localhost:8000/api/paci/${paciToDelete}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/paci/${paciToDelete}`, {
         method: "DELETE",
         headers: { "Authorization": `Bearer ${token}` }
       });

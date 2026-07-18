@@ -22,7 +22,7 @@ export default function RevisionDetallePage() {
   const fetchProfesores = async () => {
     try {
       const token = localStorage.getItem("pacia_token");
-      const res = await fetch("http://localhost:8000/api/configuracion/usuarios", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/configuracion/usuarios`, {
         headers: { "Authorization": `Bearer ${token}` }
       });
       if (res.ok) {
@@ -38,7 +38,7 @@ export default function RevisionDetallePage() {
   const fetchData = async () => {
     try {
       const token = localStorage.getItem("pacia_token");
-      const res = await fetch(`http://localhost:8000/api/paci/${id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/paci/${id}`, {
         headers: { "Authorization": `Bearer ${token}` }
       });
       if (res.ok) {
@@ -62,7 +62,7 @@ export default function RevisionDetallePage() {
     setIsUpdating(true);
     try {
       const token = localStorage.getItem("pacia_token");
-      const res = await fetch(`http://localhost:8000/api/paci/${id}/estado`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/paci/${id}/estado`, {
         method: "PUT",
         headers: { 
           "Authorization": `Bearer ${token}`,
@@ -80,7 +80,7 @@ export default function RevisionDetallePage() {
     setIsDownloading(true);
     try {
       const token = localStorage.getItem("pacia_token");
-      const res = await fetch(`http://localhost:8000/api/paci/${id}/pdf`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/paci/${id}/pdf`, {
         headers: { "Authorization": `Bearer ${token}` }
       });
       
@@ -122,7 +122,7 @@ export default function RevisionDetallePage() {
   const handleSaveMod = async (modId: number) => {
     try {
       const token = localStorage.getItem("pacia_token");
-      const res = await fetch(`http://localhost:8000/api/paci/modulo/${modId}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/paci/modulo/${modId}`, {
         method: "PUT",
         headers: { 
           "Authorization": `Bearer ${token}`,
@@ -148,7 +148,7 @@ export default function RevisionDetallePage() {
     try {
       if (!responsableId) return;
       const token = localStorage.getItem("pacia_token");
-      const res = await fetch(`http://localhost:8000/api/paci/modulo/${modId}/asignar`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/paci/modulo/${modId}/asignar`, {
         method: "PUT",
         headers: { 
           "Authorization": `Bearer ${token}`,
@@ -171,7 +171,7 @@ export default function RevisionDetallePage() {
     try {
       if (!responsableId) return;
       const token = localStorage.getItem("pacia_token");
-      const res = await fetch(`http://localhost:8000/api/paci/${id}/asignar_masivo`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/paci/${id}/asignar_masivo`, {
         method: "PUT",
         headers: { 
           "Authorization": `Bearer ${token}`,
@@ -196,7 +196,7 @@ export default function RevisionDetallePage() {
     setCoherenceAlerts([]);
     try {
       const token = localStorage.getItem("pacia_token");
-      const res = await fetch(`http://localhost:8000/api/paci/${id}/analyze`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/paci/${id}/analyze`, {
         method: "POST",
         headers: { "Authorization": `Bearer ${token}` }
       });

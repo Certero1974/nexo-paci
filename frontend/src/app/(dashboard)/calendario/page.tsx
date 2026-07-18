@@ -26,14 +26,14 @@ export default function CalendarioPage() {
       const token = localStorage.getItem("pacia_token");
       
       // Obtener eventos
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}`;
       const res = await fetch(`${apiUrl}/api/calendario`, {
         headers: { "Authorization": `Bearer ${token}` }
       });
       if (res.ok) setEventos(await res.json());
 
       // Obtener estudiantes para el select
-      const resEst = await fetch("http://localhost:8000/api/estudiantes", {
+      const resEst = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/estudiantes`, {
         headers: { "Authorization": `Bearer ${token}` }
       });
       if (resEst.ok) setEstudiantes(await resEst.json());
@@ -68,7 +68,7 @@ export default function CalendarioPage() {
         estudiante_id: nuevoEvento.estudiante_id ? parseInt(nuevoEvento.estudiante_id) : null
       };
 
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}`;
       const res = await fetch(`${apiUrl}/api/calendario`, {
         method: "POST",
         headers: { 

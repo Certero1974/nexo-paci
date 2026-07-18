@@ -20,7 +20,7 @@ export default function ReportesAccionablesPage() {
     const fetchData = async () => {
       try {
         const token = localStorage.getItem("pacia_token");
-        const res = await fetch("http://localhost:8000/api/reportes/kpis", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/reportes/kpis`, {
           headers: { "Authorization": `Bearer ${token}` }
         });
         if (res.ok) {

@@ -29,7 +29,7 @@ export default function ConfiguracionPage() {
       const token = localStorage.getItem("pacia_token");
       
       // Fetch Ajustes
-      const resAj = await fetch("http://localhost:8000/api/configuracion/ajustes", {
+      const resAj = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/configuracion/ajustes`, {
         headers: { "Authorization": `Bearer ${token}` }
       });
       if (resAj.ok) {
@@ -44,7 +44,7 @@ export default function ConfiguracionPage() {
       }
 
       // Fetch Usuarios
-      const resUs = await fetch("http://localhost:8000/api/configuracion/usuarios", {
+      const resUs = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/configuracion/usuarios`, {
         headers: { "Authorization": `Bearer ${token}` }
       });
       if (resUs.ok) {
@@ -67,7 +67,7 @@ export default function ConfiguracionPage() {
     setIsSaving(true);
     try {
       const token = localStorage.getItem("pacia_token");
-      const res = await fetch("http://localhost:8000/api/configuracion/ajustes", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/configuracion/ajustes`, {
         method: "PUT",
         headers: { 
           "Authorization": `Bearer ${token}`,
@@ -92,7 +92,7 @@ export default function ConfiguracionPage() {
 
     try {
       const token = localStorage.getItem("pacia_token");
-      const res = await fetch("http://localhost:8000/api/configuracion/logo", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/configuracion/logo`, {
         method: "POST",
         headers: { "Authorization": `Bearer ${token}` },
         body: formData
@@ -113,7 +113,7 @@ export default function ConfiguracionPage() {
     e.preventDefault();
     try {
       const token = localStorage.getItem("pacia_token");
-      const res = await fetch("http://localhost:8000/api/configuracion/usuarios", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/configuracion/usuarios`, {
         method: "POST",
         headers: { 
           "Authorization": `Bearer ${token}`,
@@ -138,7 +138,7 @@ export default function ConfiguracionPage() {
     if (!confirm("¿Estás seguro de que deseas eliminar a este usuario?")) return;
     try {
       const token = localStorage.getItem("pacia_token");
-      const res = await fetch(`http://localhost:8000/api/configuracion/usuarios/${id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/configuracion/usuarios/${id}`, {
         method: "DELETE",
         headers: { "Authorization": `Bearer ${token}` }
       });
