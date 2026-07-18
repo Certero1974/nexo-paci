@@ -25,7 +25,7 @@ export default function OnboardingTour() {
     return () => window.removeEventListener("start-pacia-tour", handleStartTour);
   }, []);
 
-  const steps: Step[] = [
+  const steps: any[] = [
     {
       target: "body",
       content: (
