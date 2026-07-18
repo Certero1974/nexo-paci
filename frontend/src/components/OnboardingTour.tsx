@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-import type { Step, CallBackProps } from "react-joyride";
+import type { Step } from "react-joyride";
 import { STATUS } from "react-joyride";
 
 const Joyride = dynamic(() => import("react-joyride").then(mod => mod.Joyride as any), { ssr: false }) as any;
@@ -69,7 +69,7 @@ export default function OnboardingTour() {
     }
   ];
 
-  const handleJoyrideCallback = (data: CallBackProps) => {
+  const handleJoyrideCallback = (data: any) => {
     const { status } = data;
     const finishedStatuses: string[] = [STATUS.FINISHED, STATUS.SKIPPED];
 
