@@ -27,8 +27,8 @@ export default function RevisionDetallePage() {
       });
       if (res.ok) {
         const users = await res.json();
-        // Mostrar profesores o docentes (por si crearon uno antes de la actualización)
-        setProfesores(users.filter((u: any) => u.rol === "Profesor Aula" || u.rol === "Docente"));
+        // Filtrar a todos menos al coordinador (o permitir a todos para que no quede vacío)
+        setProfesores(users.filter((u: any) => u.rol !== "Coordinador PIE"));
       }
     } catch (e) {
       console.error("Error al cargar profesores", e);
